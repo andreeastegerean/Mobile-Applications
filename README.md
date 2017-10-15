@@ -12,7 +12,7 @@ My "SHAPE OF YOU" application is a fitness application that will provide its use
 -online support -> synchronize date to/from a remote location
  
  
- The application will be developed on Android and it will contain a persisten database with all the necessary entities.
+ The application will be developed on Android and it will contain a persistent database with all the necessary entities.
  
  Why did I approach this theme?
    Even though there are a lot of fitness applications on the market, I am planning to develop my own app, so I can add whatever functionalities I believe are useful for me.
