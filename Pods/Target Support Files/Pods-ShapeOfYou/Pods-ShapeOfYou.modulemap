@@ -1,0 +1,6 @@
+framework module Pods_ShapeOfYou {
+  umbrella header "Pods-ShapeOfYou-umbrella.h"
+
+  export *
+  module * { export * }
+}
