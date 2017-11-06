@@ -16,7 +16,7 @@ public class ApiClient: NSObject{
                                        "Email": Email,
                                        "Username": Username,
                                        "Password": Password]
-        Alamofire.request("http://192.168.100.134:8080/api/Users/Register",method:.post,parameters:parameters).validate().responseJSON{
+        Alamofire.request("http://192.168.1.10:8080/api/Users/Register",method:.post,parameters:parameters).validate().responseJSON{
             (response) in
             switch response.result{
             case.success(let value):
@@ -43,7 +43,7 @@ public class ApiClient: NSObject{
         let parameters: Parameters = [
         "Username": Username,
         "Password": Password]
-        Alamofire.request("http://192.168.100.134:8080/api/Users/Login",method:.post,parameters:parameters).validate().responseJSON{
+        Alamofire.request("http://192.168.1.10:8080/api/Users/Login",method:.post,parameters:parameters).validate().responseJSON{
             (response) in
             switch response.result{
             case .success(let value):
@@ -69,7 +69,7 @@ public class ApiClient: NSObject{
     
     func fetchFoods(completion: @escaping ([Food]?)->Void)
     {
-        Alamofire.request("http://192.168.100.134:8080/api/Foods/GetAllFoods").validate()
+        Alamofire.request("http://192.168.1.10:8080/api/Foods/GetAllFoods").validate()
             .responseJSON { (response) in
                 switch response.result{
                 case .success(let value):
@@ -99,7 +99,7 @@ public class ApiClient: NSObject{
             "Quantity" : Quantity,
             "UserId" : String(UserId)
         ]
-        Alamofire.request("http://192.168.100.134:8080/api/Foods/UpdateFood/"+String(ID),method:.put,parameters:parameters).validate().responseJSON{
+        Alamofire.request("http://192.168.1.10:8080/api/Foods/UpdateFood/"+String(ID),method:.put,parameters:parameters).validate().responseJSON{
             (response) in
             switch response.result
             {

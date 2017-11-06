@@ -242,10 +242,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <rect key="contentStretch" x="0.050000000000000003" y="0.050000000000000003" width="0.94999999999999996" height="0.94999999999999996"/>
+                        <rect key="contentStretch" x="0.29999999999999999" y="0.050000000000000003" width="0.94999999999999996" height="0.94999999999999996"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="TL3-BM-Px7" customClass="FoodTableNavBar" customModule="ShapeOfYou">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Foods List" id="XLg-HJ-RjS">
+                                    <barButtonItem key="leftBarButtonItem" style="plain" id="VDk-RA-NkA">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0PW-mJ-fLA">
+                                            <rect key="frame" x="16" y="7" width="52" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.35495978099999997" green="0.68348990620000005" blue="0.82675682110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="contentStretch" x="0.59999999999999998" y="0.0" width="1" height="1"/>
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Log out"/>
+                                        </button>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="XRz-hU-fTx" id="ALT-Ko-t9l"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="foodCell" id="jjX-GW-Db4" customClass="FoodTableViewCell" customModule="ShapeOfYou" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jjX-GW-Db4" id="33V-DA-MiB">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -368,9 +389,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOl-9P-L3Y">
                                 <rect key="frame" x="16" y="337" width="105" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.22086493523738138" blue="0.11957571510669007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.35495978096069547" green="0.68348990615672589" blue="0.82675682106598991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Cancel"/>
+                                <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="jJy-CD-l1c" eventType="touchUpInside" id="Vuc-5u-yrY"/>
                                 </connections>

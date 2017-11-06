@@ -31,7 +31,9 @@ class UpdateFoodViewController: UIViewController {
     @IBAction func saveButtonPressed(_ sender: Any) {
         self.updateViewModel.UpdateFoodVM(name: nametextField.text!, kcal: Int(kcalTextField.text!)! , quantity: Int(quantityTextField.text!)!, userId: UserDefaults.standard.integer(forKey: "currentId")) {
             if self.updateViewModel != nil {
-                print("UPDATE VIEW MODEL IS NOT NIL")
+                let alert = UIAlertController(title: "Done", message: "\(self.nametextField.text!) was updated", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
             else
             {
@@ -48,4 +50,6 @@ class UpdateFoodViewController: UIViewController {
         FoodsTableViewController
         self.present(tableViewController, animated: true)
     }
+    
+
 }

@@ -8,6 +8,13 @@
 
 import UIKit
 
+public class FoodTableNavBar : UINavigationBar{
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        
+    }
+}
+
 public class FoodTableViewCell : UITableViewCell{
     @IBOutlet weak var KcalLabel: UILabel!
     @IBOutlet weak var QuantityLabel: UILabel!
@@ -20,11 +27,12 @@ class FoodsTableViewController: UITableViewController {
     @IBOutlet var foodViewModel : FoodViewModel!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        self.tableView.contentInset = UIEdgeInsets(top: 40,left: 0,bottom: 0,right: 0)
         foodViewModel.getFoods {
             self.tableView.reloadData()
         }
-        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,5 +79,6 @@ class FoodsTableViewController: UITableViewController {
         }
         
     }
-
+    
+    
 }

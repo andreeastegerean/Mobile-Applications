@@ -26,34 +26,42 @@ class RegisterViewController: UIViewController , MFMailComposeViewControllerDele
         self.dismiss(animated: true,completion: nil)
         print("cancel")
     }
-    func sendEMail(to dest : String, fullname: String, username: String){
-        self.dismiss(animated: true, completion: nil)
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setToRecipients([dest])
-            mail.setSubject("ShapeOfYou fitness application")
-            mail.setMessageBody("<p>Welcome, \(fullname)! Your username is \(username) and have a good time descovering the app</p>", isHTML: true)
-            self.dismiss(animated: true, completion: nil)
-            present(mail, animated: true)
-        }
+    
+    func configuredMailComposeViewController(to dest : String, fullname: String, username: String) -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        mailComposerVC.setToRecipients([dest])
+        mailComposerVC.setSubject("ShapeOfYou fitness application")
+        mailComposerVC.setMessageBody("<p>Welcome, \(fullname)! Your username is \(username) and have a good time descovering the app</p>", isHTML: true)
+        
+        return mailComposerVC
     }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         
         registerViewModel.registerUser(fullname: fullNameTextField.text!, email: emailTextField.text!, username: usernameTextField.text!, password: passwordTextField.text!, completion: {
             (success) in
             if success{
-                self.sendEMail(to: self.emailTextField.text!, fullname: self.fullNameTextField.text!, username: self.usernameTextField.text!)
+                let mailComposeViewController = self.configuredMailComposeViewController(to: self.emailTextField.text!, fullname: self.fullNameTextField.text!, username: self.usernameTextField.text!)
+                if MFMailComposeViewController.canSendMail() {
+                    self.present(mailComposeViewController, animated: true, completion: nil)
+                } else {
+                    self.showSendMailErrorAlert()
+                }
                 let loginViewController =
                     self.storyboard?.instantiateViewController(withIdentifier: "SigninViewController") as!
                 SigninViewController
                 self.present(loginViewController, animated: true)
-            }
-            else
-            {
-                let alert = UIAlertController(title: "Alert", message: "Username already registered", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
             }
             })
     }
