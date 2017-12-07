@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, KeyboardAvoidingView, ScrollView, FlatList, Button, TouchableOpacity } from 'react-native';
-
-
+import ApiClient from "../../Utils/ApiClient";
+import { AsyncStorage } from "react-native";
 export default class FoodList extends Component {
 
 
@@ -12,62 +12,56 @@ export default class FoodList extends Component {
     };
     constructor(props) {
         super(props);
-
         this.state = {
-            selected: false,
-            foods2: [{ key: "Bread", id: 1, kcal: 1300, quantity: 133, },
-            { key: "Eggs", id: 2, kcal: 187, quantity: 123, },
-            { key: "Chocolate", id: 3, kcal: 13, quantity: 3, },
-            ]
-        };
-    }
-    foods = [
-        {
-            id: '1',
-            name: 'Bread',
-            kcal: '100',
-            quantity: '1'
-        },
-        {
-            id: '2',
-            name: 'Chocolate',
-            kcal: '1000',
-            quantity: '2'
-        },
-        {
-            id: '3',
-            name: 'Pasta',
-            kcal: '700',
-            quantity: '1'
-        },
-        {
-            id: '4',
-            name: 'Chicken',
-            kcal: '340',
-            quantity: '2'
+            dataSource: [
+                {
+                  Id: 0,
+                  Name: "",
+                  Kcal:0,
+                  Quantity:0
+                }],
         }
-    ]
+    }
 
+    componentDidMount() {
+        console.log("am ajuns in component did mount")
+        this.reloadData();
+      }
 
-
+    reloadData = async () => {
+        
+        console.log("am intrat in reload data")
+        ApiClient.fetchFoods().then(foods => {
+          if (foods != null) {
+            this.setState({dataSource: foods},function () {
+                console.log(this.state.dataSource);
+                console.log("am intrat in fct de la setState")
+            });
+          }
+        }).catch((error)=>{
+            console.log("Api call error");
+            alert(error.message);
+         });
+      }
 
     goToFoodDetails = () => {
         this.props.navigation.navigate("FoodDetails")
     }
 
-
+    
     render() {
         const { navigate } = this.props.navigation;
+        console.log("am ajuns si in render")
         return (
             <View style={styles.container}>
                 <ScrollView style={styles.scrollContainer}>
                     <FlatList
                         style={styles.flatContainer}
-                        data={this.foods}
+                        data={this.dataSource}
                         renderItem={
                             ({ item }) => <View style>
                                 <Text style={styles.text}>
-                                    {item.name}, {item.kcal}, {item.quantity}</Text>
+                                    {item.Name}, {item.Kcal}, {item.Quantity}</Text>
 
                                 <Button
                                     title={"View/Edit"}

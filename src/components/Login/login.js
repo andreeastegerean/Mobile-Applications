@@ -17,8 +17,9 @@ export default class Login extends Component {
 
 
     SendEmail = () => {
+        /*
         Communications.email([this.state.email],null,null,'Shape of you',
-        'Your new password is '+this.state.password);
+        'Your email is ' + this.state.email+ ' , and your new password is '+this.state.password);*/
         this.props.navigation.navigate("FoodList");
     }
 
@@ -37,7 +38,7 @@ export default class Login extends Component {
                         placeholder="username"
                         returnKeyType="next"
                         style={styles.input} 
-                        onChangeText={username => this.setState({username})}
+                        onChangeText={email => this.setState({email})}
                         />
                     <TextInput
                         placeholder="password"
