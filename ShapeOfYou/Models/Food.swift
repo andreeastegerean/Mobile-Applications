@@ -23,5 +23,7 @@ public class Food{
         self.Quantity=Quantity;
         self.UserId=UserId;
     }
+    
+    
 
 }

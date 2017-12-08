@@ -7,12 +7,11 @@
 //
 
 import UIKit
+import Charts
 
 public class FoodTableNavBar : UINavigationBar{
     
-    @IBAction func backButtonPressed(_ sender: Any) {
-        
-    }
+    
 }
 
 public class FoodTableViewCell : UITableViewCell{
@@ -26,6 +25,18 @@ class FoodsTableViewController: UITableViewController {
 
     @IBOutlet var foodViewModel : FoodViewModel!
     
+    @IBAction func goToChart(_ sender: Any) {
+        let chartsController =
+            self.storyboard?.instantiateViewController(withIdentifier: "ChartsViewController") as!
+        ChartsViewController
+        self.present(chartsController, animated: true)
+    }
+    @IBAction func navigateToCreateFood(_ sender: Any) {
+        let createViewController =
+            self.storyboard?.instantiateViewController(withIdentifier: "AddFoodViewController") as!
+        AddFoodViewController
+        self.present(createViewController, animated: true)
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -33,8 +44,22 @@ class FoodsTableViewController: UITableViewController {
         foodViewModel.getFoods {
             self.tableView.reloadData()
         }
+     
     }
-
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+                        self.foodViewModel.DeleteFoodVM(for: indexPath){ok in
+                                print(ok)
+                            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return foodViewModel.NumberOfItemsToDisplay(in: section)

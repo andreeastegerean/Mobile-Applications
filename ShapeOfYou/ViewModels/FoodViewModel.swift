@@ -48,4 +48,15 @@ public class FoodViewModel : NSObject{
         }
         return nil
     }
+    
+    func DeleteFoodVM(for indexPath: IndexPath,completion: @escaping (Bool) -> Void){
+        let food = (self.foods?[indexPath.row])!
+        self.foods?.remove(at: indexPath.row)
+        apiClient.deleteFood(ID: food.Id) { (Ok) in
+            DispatchQueue.main.async {
+                completion(Ok)
+            }
+            
+        }
+    }
 }

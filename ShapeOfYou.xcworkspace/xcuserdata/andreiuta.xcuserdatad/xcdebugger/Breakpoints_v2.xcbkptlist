@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/RegisterViewController.swift"
-            timestampString = "531685709.319939"
+            timestampString = "533639661.718238"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/ViewModels/FoodViewModel.swift"
-            timestampString = "531685157.484489"
+            timestampString = "534265429.089346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/ViewModels/FoodViewModel.swift"
-            timestampString = "531685157.484793"
+            timestampString = "534265429.08943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/RegisterViewController.swift"
-            timestampString = "531685709.320284"
+            timestampString = "533639661.73174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/SigninViewController.swift"
-            timestampString = "531685424.795387"
+            timestampString = "534265429.089554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "signInButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/SigninViewController.swift"
-            timestampString = "531685424.79548"
+            timestampString = "534265429.089632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "signInButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/SigninViewController.swift"
-            timestampString = "531685424.79555"
+            timestampString = "534265429.089691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "signInButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/ViewControllers/UpdateFoodViewController.swift"
-            timestampString = "531686331.244849"
+            timestampString = "534252264.20419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "saveButtonPressed(_:)"
             landmarkType = "7">
             <Locations>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/ViewControllers/UpdateFoodViewController.swift"
-            timestampString = "531686331.244952"
+            timestampString = "534252264.204302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "saveButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/ViewControllers/UpdateFoodViewController.swift"
-            timestampString = "531686331.245009"
+            timestampString = "534252264.204432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "saveButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -249,104 +249,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShapeOfYou/ViewModels/UpdateFoodViewModel.swift"
-            timestampString = "531685709.320909"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "UpdateFoodVM(name:kcal:quantity:userId:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ShapeOfYou.UpdateFoodViewModel.UpdateFoodVM(name: Swift.String, kcal: Swift.Int, quantity: Swift.Int, userId: Swift.Int, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "ShapeOfYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andreiuta/Documents/Documents%20-%20Andreea%E2%80%99s%20MacBook%20Air/IOS/ShapeOfYou/ShapeOfYou/ViewModels/UpdateFoodViewModel.swift"
-                  timestampString = "531615923.802086"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "68">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;ShapeOfYou.Food&gt;) -&gt; () in ShapeOfYou.UpdateFoodViewModel.UpdateFoodVM(name: Swift.String, kcal: Swift.Int, quantity: Swift.Int, userId: Swift.Int, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "ShapeOfYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andreiuta/Documents/Documents%20-%20Andreea%E2%80%99s%20MacBook%20Air/IOS/ShapeOfYou/ShapeOfYou/ViewModels/UpdateFoodViewModel.swift"
-                  timestampString = "531615923.805069"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShapeOfYou/ViewModels/UpdateFoodViewModel.swift"
-            timestampString = "531685709.321005"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "UpdateFoodVM(name:kcal:quantity:userId:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShapeOfYou/ViewModels/UpdateFoodViewModel.swift"
-            timestampString = "531685709.321125"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "UpdateFoodVM(name:kcal:quantity:userId:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShapeOfYou/ViewModels/UpdateFoodViewModel.swift"
-            timestampString = "531685709.321228"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "UpdateFoodVM(name:kcal:quantity:userId:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/Utils/ApiClient.swift"
-            timestampString = "531685709.3214"
+            timestampString = "534382868.767296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
@@ -394,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/Utils/ApiClient.swift"
-            timestampString = "531685709.321497"
+            timestampString = "534382868.767534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -410,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/ViewControllers/UpdateFoodViewController.swift"
-            timestampString = "531686331.245177"
+            timestampString = "534252264.204828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "saveButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/ViewModels/RegisterViewModel.swift"
-            timestampString = "531615529.554427"
+            timestampString = "533646169.882278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -474,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/Utils/ApiClient.swift"
-            timestampString = "531685709.321695"
+            timestampString = "534382868.76772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
@@ -490,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/Utils/ApiClient.swift"
-            timestampString = "531685709.321772"
+            timestampString = "534382868.767822"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -506,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShapeOfYou/Utils/ApiClient.swift"
-            timestampString = "531685709.321866"
+            timestampString = "534382868.767953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -518,16 +422,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShapeOfYou/ViewModels/UpdateFoodViewModel.swift"
-            timestampString = "531685709.32194"
+            filePath = "ShapeOfYou/ViewModels/FoodViewModel.swift"
+            timestampString = "534265429.090135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "UpdateFoodVM(name:kcal:quantity:userId:completion:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "getDetailForFood(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -537,13 +441,61 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShapeOfYou/ViewModels/FoodViewModel.swift"
-            timestampString = "531685157.493464"
+            filePath = "ShapeOfYou/ViewModels/ChartViewModel.swift"
+            timestampString = "534384071.553573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "getDetailForFood(for:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "fetchQuantities(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShapeOfYou/ViewModels/ChartViewModel.swift"
+            timestampString = "534384071.554031"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "fetchNames(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShapeOfYou/ViewModels/ChartViewModel.swift"
+            timestampString = "534384071.554411"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "fetchNames(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShapeOfYou/ViewControllers/ChartsViewController.swift"
+            timestampString = "534384071.554829"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getNames()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

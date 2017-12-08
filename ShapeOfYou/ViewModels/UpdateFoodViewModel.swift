@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 public class UpdateFoodViewModel: NSObject{
+    
     @IBOutlet var api : ApiClient!
     var food : Food!
     let defaultValues = UserDefaults.standard
@@ -23,8 +24,7 @@ public class UpdateFoodViewModel: NSObject{
             
         }
     }
-    
-    
+
     func setFood(f: Food){
         self.food = f;
     }

@@ -10,13 +10,13 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 public class ApiClient: NSObject{
-    
+    var URL : String = "http://192.168.100.28:8080/api/"
     func register(Fullname: String, Email: String, Username: String, Password: String, completion: @escaping (Bool, String, String, Int)-> Void){
         let parameters: Parameters = [ "Fullname": Fullname,
                                        "Email": Email,
                                        "Username": Username,
                                        "Password": Password]
-        Alamofire.request("http://192.168.1.10:8080/api/Users/Register",method:.post,parameters:parameters).validate().responseJSON{
+        Alamofire.request(URL+"Users/Register",method:.post,parameters:parameters).validate().responseJSON{
             (response) in
             switch response.result{
             case.success(let value):
@@ -43,7 +43,7 @@ public class ApiClient: NSObject{
         let parameters: Parameters = [
         "Username": Username,
         "Password": Password]
-        Alamofire.request("http://192.168.1.10:8080/api/Users/Login",method:.post,parameters:parameters).validate().responseJSON{
+        Alamofire.request(URL+"Users/Login",method:.post,parameters:parameters).validate().responseJSON{
             (response) in
             switch response.result{
             case .success(let value):
@@ -69,7 +69,7 @@ public class ApiClient: NSObject{
     
     func fetchFoods(completion: @escaping ([Food]?)->Void)
     {
-        Alamofire.request("http://192.168.1.10:8080/api/Foods/GetAllFoods").validate()
+        Alamofire.request(URL+"Foods/GetAllFoods").validate()
             .responseJSON { (response) in
                 switch response.result{
                 case .success(let value):
@@ -99,7 +99,7 @@ public class ApiClient: NSObject{
             "Quantity" : Quantity,
             "UserId" : String(UserId)
         ]
-        Alamofire.request("http://192.168.1.10:8080/api/Foods/UpdateFood/"+String(ID),method:.put,parameters:parameters).validate().responseJSON{
+        Alamofire.request(URL+"Foods/UpdateFood/"+String(ID),method:.put,parameters:parameters).validate().responseJSON{
             (response) in
             switch response.result
             {
@@ -116,4 +116,48 @@ public class ApiClient: NSObject{
             }
         }
     }
+    
+    func createFood(Name: String, Kcal: Int, Quantity: Int,UserId: Int,completion: @escaping (Food?)-> Void){
+        let parameters: Parameters = [
+            "Name" : Name,
+            "Kcal": Kcal,
+            "Quantity": Quantity,
+            "UserId": UserId
+        ]
+        Alamofire.request(URL+"Foods/CreateFood",method:.post,parameters:parameters).validate().responseJSON{
+            (response) in
+            switch response.result
+            {
+            case .success(let value):
+                let json = JSON(value)
+                let Id=json["Id"].intValue
+                let Name = json["Name"].stringValue
+                let Kcal =  json["Kcal"].intValue
+                let Quantity = json["Quantity"].intValue
+                let UserId = json["UserId"].intValue
+                completion(Food(Id: Id,Name: Name,Kcal: Kcal,Quantity: Quantity,UserId: UserId))
+            case .failure( _):
+                completion(nil)
+            }
+        }
+    }
+    
+    func deleteFood(ID:Int,completion: @escaping (Bool)-> Void){
+        let parameters: Parameters=[
+            "Id" : ID
+        ]
+        Alamofire.request(URL+"Foods/DeleteFood/"+String(ID),method:.delete,parameters:parameters).validate().responseJSON{
+            (response) in
+            switch response.result{
+            case .success(let value):
+                let json = JSON(value)
+                let Success = json["Success"].boolValue
+                completion(Success)
+            case .failure(_):
+                completion(false)
+            }
+        }
+    }
+    
+    
 }
