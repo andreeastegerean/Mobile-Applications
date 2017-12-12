@@ -1,14 +1,14 @@
 
 import React, { Component } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
-  AsyncStorage,
-  Picker,
-  Alert,
-  TextInput,
-  TouchableOpacity
+    View,
+    Text,
+    StyleSheet,
+    AsyncStorage,
+    Picker,
+    Alert,
+    TextInput,
+    TouchableOpacity
 } from "react-native";
 import ApiClient from "../../Utils/ApiClient";
 
@@ -18,91 +18,83 @@ export default class AddFood extends Component {
         title: "Add New Food",
         headerStyle: { backgroundColor: "#CE563C" },
         headerTitleStyle: { color: "white" }
-      };
-      constructor(props) {
+    };
+    constructor(props) {
         super(props);
         this.state = {
-          name: "",
-          kcal: 0,
-          quantity: 0,
+            name: "",
+            kcal: 0,
+            quantity: 0,
+            currentlySelectedValue: {key:"1",value:"1g"}
         };
-      }
-    
-      componentDidMount() {
-      }
+    }
 
-      save = async () => {
+    componentDidMount() {
+    }
+
+    save = async () => {
         var name = this.state.name;
-        var kcal=parseInt(this.state.kcal);
-        var qu=parseInt(this.state.quantity);
-        var addResult = await ApiClient.addFood(name, kcal,qu);
-        console.log(addResult);
-        if (addResult) {
-          Alert.alert(name + " was added successfully!");
-        } else {
-            console.log("addResult is not ok")
-            Alert.alert(addResult.message);
-        }
+        var kcal = parseInt(this.state.kcal);
+        var qu = parseInt(this.state.currentlySelectedValue);
+        console.log(name + kcal + qu);
+        ApiClient.addFood(name, kcal, qu)
+            .then(alert(name + " added successfully!"))
+            .catch((error) => {
+                console.log("Api call error");
+                alert(error.message);
+            })
+
+
         this.props.navigation.state.params.onGoBack();
         this.props.navigation.goBack();
-      };
+    };
 
-      render() {
-        
-        const {state} = this.props.navigation;
+    render() {
+
+        const { state } = this.props.navigation;
         var food = state.params ? state.params.food : "<undefined>";
-        var options =["Home","Savings","Car","GirlFriend"];
-        /*
-        let quantities = this.state.qList.map(data => {
-            return (
-              <Picker.Item
-                key={data.key}
-                value={data.value}
-                label={data.value}
-              />
-            );
-        });*/
+        var options = [{ key: "1", value: "1g" }, { key: "2", value: "2g" }, { key: "3", value: "3g" }];
 
-        /*
-        <Picker
-                 mode="dropdown"
-                 selectedValue={}
-                 onValueChange={(itemValue, itemIndex) => this.setState({qList: itemValue})}
-                 >
-                    {options.map((item, index) => {
-             return (<Item label={item} value={index} key={index}/>) 
-                            })}
-                 </Picker>*/
+        let quantities = options.map(data => {
+            return (
+                <Picker.Item
+                    key={data.key}
+                    value={data.key}
+                    label={data.value}
+                />
+            );
+        });
         return (
-            <View style={styles.container} >      
-                <TextInput style = {styles.input} placeholder="Food name"
-                onChangeText={name => this.setState({ name })}
-                /> 
-                <TextInput style = {styles.input} placeholder="callories"
-                onChangeText={kcal => this.setState({ kcal })}
-                /> 
-                 <TextInput style={styles.input} placeholder="quantity"
-                 onChangeText={quantity => this.setState({ quantity })}
-                 />
-                 
-                 
-                 <TouchableOpacity
-                    style={styles.button} 
-                    onPress={this.save}> 
-          <Text style={styles.textBtn}>Save</Text>
-        </TouchableOpacity>
+            <View style={styles.container} >
+                <TextInput style={styles.input} placeholder="Food name"
+                    onChangeText={name => this.setState({ name })}
+                />
+                <TextInput style={styles.input} placeholder="callories"
+                    onChangeText={kcal => this.setState({ kcal })}
+                />
+                <Picker
+                selectedValue={this.state.currentlySelectedValue}
+                onValueChange={(itemValue, itemIndex) =>
+                  this.setState({ currentlySelectedValue: itemValue })
+                }
+                >{quantities}</Picker>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={this.save}>
+                    <Text style={styles.textBtn}>Save</Text>
+                </TouchableOpacity>
             </View>
         );
     }
 }
 
 
-const styles=StyleSheet.create(
+const styles = StyleSheet.create(
     {
-        foodName:{
-            color:'#E91E63',
-            fontSize:25,
-            textAlign:'center',
+        foodName: {
+            color: '#E91E63',
+            fontSize: 25,
+            textAlign: 'center',
         },
 
         container: {
@@ -117,22 +109,22 @@ const styles=StyleSheet.create(
             backgroundColor: "#2c3e50",
             color: "white",
             fontSize: 30
-          },
+        },
 
-          input: {
+        input: {
             height: 40,
             backgroundColor: 'rgba(255,255,255,0.2)',
             marginBottom: 20,
         },
 
-          button:{
+        button: {
             backgroundColor: "#832713",
             paddingVertical: 15,
             marginTop: 30
-          },
+        },
 
-          textBtn:{
+        textBtn: {
             textAlign: 'center',
             fontWeight: '700'
-          }
+        }
     });

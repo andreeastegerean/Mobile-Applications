@@ -8,54 +8,49 @@ export default class FoodList extends Component {
     static navigationOptions = ({ navigation }) => {
         const { params = {} } = navigation.state;
         return {
-          title: "Foods",
-          headerStyle: { backgroundColor: "#CE563C" },
-          headerTitleStyle: { color: "white" },
-          headerRight: <Button title="+" onPress={() => params.handleAdd()} />
+            title: "Foods",
+            headerStyle: { backgroundColor: "#CE563C" },
+            headerTitleStyle: { color: "white" },
+            headerRight: <Button title="+" onPress={() => params.handleAdd()} />
         };
-      };
+    };
     constructor(props) {
         super(props);
         this.state = {
             dataSource: [
                 {
-                  Id: 0,
-                  Name: "",
-                  Kcal:0,
-                  Quantity:0
+                    Id: 0,
+                    Name: "",
+                    Kcal: 0,
+                    Quantity: 0
                 }],
         }
     }
 
     goToAdd = () => {
-        this.props.navigation.navigate("AddFood", {onGoBack: () => this.reloadData()});
-      };
+        this.props.navigation.navigate("AddFood", { onGoBack: () => this.reloadData() });
+    };
 
     componentDidMount() {
         this.props.navigation.setParams({ handleAdd: this.goToAdd });
         this.reloadData();
-      }
+    }
 
     reloadData = async () => {
         ApiClient.fetchFoods().then(foods => {
             var list = foods;
-          if (foods !== null) {
+            if (foods !== null) {
 
-            this.setState({dataSource: list},function () {
-                console.log(this.state.dataSource);
-            });
-          }
-        }).catch((error)=>{
+                this.setState({ dataSource: list }, function () {
+                    console.log(this.state.dataSource);
+                });
+            }
+        }).catch((error) => {
             console.log("Api call error");
             alert(error.message);
-         });
-      }
-
-    goToFoodDetails = () => {
-        this.props.navigation.navigate("FoodDetails")
+        });
     }
 
-    
     render() {
         const { navigate } = this.props.navigation;
         return (
@@ -71,10 +66,20 @@ export default class FoodList extends Component {
 
                                 <Button
                                     title={"Edit"}
-                                    onPress= {
-                                        () => navigate('FoodDetails',{ food : item })
+                                    onPress={
+                                        () => navigate('FoodDetails', { food: item })
 
                                     }>
+                                </Button>
+
+                                <Button
+                                    title={"Delete"}
+                                    onPress={() => {
+                                        ApiClient.deleteFood(item.Id);
+                                        this.reloadData();
+                                    }
+                                    }
+                                >
                                 </Button>
                             </View>
 
@@ -84,7 +89,7 @@ export default class FoodList extends Component {
                     </FlatList>
                 </ScrollView>
 
-                
+
             </View>
         );
     }
