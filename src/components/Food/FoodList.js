@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, KeyboardAvoidingView, ScrollView, FlatList, Button, TouchableOpacity } from 'react-native';
 import ApiClient from "../../Utils/ApiClient";
 import { AsyncStorage } from "react-native";
+
 export default class FoodList extends Component {
 
-
-    static navigationOptions = {
-        title: "Foods",
-        headerStyle: { backgroundColor: "#CE563C" },
-        headerTitleStyle: { color: "white" }
-    };
+    static navigationOptions = ({ navigation }) => {
+        const { params = {} } = navigation.state;
+        return {
+          title: "Foods",
+          headerStyle: { backgroundColor: "#CE563C" },
+          headerTitleStyle: { color: "white" },
+          headerRight: <Button title="+" onPress={() => params.handleAdd()} />
+        };
+      };
     constructor(props) {
         super(props);
         this.state = {
@@ -23,19 +27,22 @@ export default class FoodList extends Component {
         }
     }
 
+    goToAdd = () => {
+        this.props.navigation.navigate("AddFood", {onGoBack: () => this.reloadData()});
+      };
+
     componentDidMount() {
-        console.log("am ajuns in component did mount")
+        this.props.navigation.setParams({ handleAdd: this.goToAdd });
         this.reloadData();
       }
 
     reloadData = async () => {
-        
-        console.log("am intrat in reload data")
         ApiClient.fetchFoods().then(foods => {
-          if (foods != null) {
-            this.setState({dataSource: foods},function () {
+            var list = foods;
+          if (foods !== null) {
+
+            this.setState({dataSource: list},function () {
                 console.log(this.state.dataSource);
-                console.log("am intrat in fct de la setState")
             });
           }
         }).catch((error)=>{
@@ -51,20 +58,19 @@ export default class FoodList extends Component {
     
     render() {
         const { navigate } = this.props.navigation;
-        console.log("am ajuns si in render")
         return (
             <View style={styles.container}>
                 <ScrollView style={styles.scrollContainer}>
                     <FlatList
                         style={styles.flatContainer}
-                        data={this.dataSource}
+                        data={this.state.dataSource}
                         renderItem={
                             ({ item }) => <View style>
                                 <Text style={styles.text}>
                                     {item.Name}, {item.Kcal}, {item.Quantity}</Text>
 
                                 <Button
-                                    title={"View/Edit"}
+                                    title={"Edit"}
                                     onPress= {
                                         () => navigate('FoodDetails',{ food : item })
 
@@ -111,7 +117,7 @@ const styles = StyleSheet.create({
 
     },
     flatContainer: {
-        backgroundColor: 'red',
+        backgroundColor: '#CE563C',
         paddingBottom: 4,
         flex: 1,
         margin: 5,
