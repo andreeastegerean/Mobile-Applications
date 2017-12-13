@@ -1,5 +1,5 @@
 import { AsyncStorage } from "react-native";
-export const URL = "http://192.168.0.137:8080/api/";
+export const URL = "http://192.168.100.28:8080/api/";
 export const GETFOODS = URL + "Foods/GetAllFoods/";
 export const ADD_FOOD_URL = URL + "Foods/CreateFood";
 export const UPDATE_FOOD_URL = URL + "Foods/UpdateFood/"

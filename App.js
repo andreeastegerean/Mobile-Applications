@@ -6,12 +6,14 @@ import FoodList from './src/components/Food/FoodList';
 import AddFood from './src/components/Food/AddFood';
 import { StackNavigator } from "react-navigation";
 import FoodDetails from './src/components/Food/FoodDetails'
+import PieChart from './src/components/Chart/Chart'
 const Application = StackNavigator(
   {
     Login: {screen: Login},
     FoodList: { screen: FoodList },
     FoodDetails: {screen: FoodDetails},
-    AddFood: {screen: AddFood}
+    AddFood: {screen: AddFood},
+    PieChart: {screen: PieChart}
   },
   {
     headerMode: "screen",

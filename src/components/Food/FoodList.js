@@ -11,7 +11,8 @@ export default class FoodList extends Component {
             title: "Foods",
             headerStyle: { backgroundColor: "#CE563C" },
             headerTitleStyle: { color: "white" },
-            headerRight: <Button title="+" onPress={() => params.handleAdd()} />
+            headerRight: <Button title="+" onPress={() => params.handleAdd()} />,
+            headerLeft: <Button title="Chart" onPress={() => params.handleChart()} />
         };
     };
     constructor(props) {
@@ -31,8 +32,12 @@ export default class FoodList extends Component {
         this.props.navigation.navigate("AddFood", { onGoBack: () => this.reloadData() });
     };
 
+    goToChart = () => {
+        this.props.navigation.navigate("PieChart",{onGoBack: () => this.reloadData()});
+    };
+
     componentDidMount() {
-        this.props.navigation.setParams({ handleAdd: this.goToAdd });
+        this.props.navigation.setParams({ handleAdd: this.goToAdd,handleChart: this.goToChart });
         this.reloadData();
     }
 
@@ -88,7 +93,6 @@ export default class FoodList extends Component {
                     >
                     </FlatList>
                 </ScrollView>
-
 
             </View>
         );

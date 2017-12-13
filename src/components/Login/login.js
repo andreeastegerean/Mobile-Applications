@@ -60,7 +60,7 @@ const styles = StyleSheet.create(
     {
         containter: {
             flex: 1,
-            backgroundColor: "#3498db",
+            backgroundColor: "#CE563C",
         },
 
         logoContainer: {
