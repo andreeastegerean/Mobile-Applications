@@ -13,16 +13,20 @@ public class LoginViewModel: NSObject{
     var Message: String?
     var Username: String?
     var Id: Int?
+    var Role: Int?
     let defaultValues = UserDefaults.standard
     
     func loginUser(Username: String, Password: String, completion: @escaping (Bool)-> Void){
         apiClient.login(Username: Username, Password: Password){
-            (success,message,username,id) in
+            (success,message,username,id,role) in
             DispatchQueue.main.async {
                 self.Username = username;
                 self.Message = message;
                 self.Id = id;
+                self.Role = role;
                 self.defaultValues.set(self.Id, forKey: "currentId")
+                self.defaultValues.set(self.Role, forKey: "userRole")
+                self.defaultValues.set(self.Username, forKey: "username")
                 completion(success)
             }
         }

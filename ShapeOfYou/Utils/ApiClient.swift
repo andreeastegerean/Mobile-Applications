@@ -10,12 +10,14 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 public class ApiClient: NSObject{
-    var URL : String = "http://192.168.100.28:8080/api/"
-    func register(Fullname: String, Email: String, Username: String, Password: String, completion: @escaping (Bool, String, String, Int)-> Void){
+    var URL : String = "http://192.168.100.28:8080/api/v1/"
+    func register(Fullname: String, Email: String, Username: String, Password: String,Role: Int, completion: @escaping (Bool, String, String, Int)-> Void){
         let parameters: Parameters = [ "Fullname": Fullname,
                                        "Email": Email,
                                        "Username": Username,
-                                       "Password": Password]
+                                       "Password": Password,
+                                       "Role": Role
+                                       ]
         Alamofire.request(URL+"Users/Register",method:.post,parameters:parameters).validate().responseJSON{
             (response) in
             switch response.result{
@@ -39,10 +41,11 @@ public class ApiClient: NSObject{
         }
     }
     
-    func login(Username: String, Password: String , completion: @escaping (Bool, String, String, Int)-> Void){
+    func login(Username: String, Password: String , completion: @escaping (Bool, String, String, Int,Int)-> Void){
         let parameters: Parameters = [
         "Username": Username,
-        "Password": Password]
+        "Password": Password,
+        ]
         Alamofire.request(URL+"Users/Login",method:.post,parameters:parameters).validate().responseJSON{
             (response) in
             switch response.result{
@@ -53,11 +56,13 @@ public class ApiClient: NSObject{
                     let json = JSON(value);
                     let Username = json["Username"].stringValue
                     let UserId = json["Id"].intValue
-                    completion(Success,"",Username,UserId)
+                    let userRole = json["Role"].intValue
+                    print(userRole)
+                    completion(Success,"",Username,UserId,userRole)
                 }
                 else{
                     let Message = json["Message"].stringValue
-                    completion(false,Message,"",0)
+                    completion(false,Message,"",0,0)
                 }
 
             case .failure(_):
@@ -70,6 +75,29 @@ public class ApiClient: NSObject{
     func fetchFoods(completion: @escaping ([Food]?)->Void)
     {
         Alamofire.request(URL+"Foods/GetAllFoods").validate()
+            .responseJSON { (response) in
+                switch response.result{
+                case .success(let value):
+                    let json = JSON(value)
+                    var foods = Array<Food>()
+                    for(_,subJson):(String,JSON) in json
+                    {
+                        let Id = subJson["Id"].intValue
+                        let Name = subJson["Name"].stringValue
+                        let Kcal =  subJson["Kcal"].intValue
+                        let Quantity = subJson["Quantity"].intValue
+                        let UserId = subJson["UserId"].intValue
+                        foods.append(Food(Id: Id,Name: Name,Kcal: Kcal,Quantity: Quantity,UserId: UserId))
+                    }
+                    completion(foods)
+                case .failure( _):
+                    completion(nil)
+                }
+        }
+    }
+    
+    func fetchFoodsForUser(ID: Int,completion: @escaping ([Food]?)->Void){
+        Alamofire.request(URL+"Foods/GetFoodsForUser/"+String(ID)).validate()
             .responseJSON { (response) in
                 switch response.result{
                 case .success(let value):

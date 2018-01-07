@@ -10,9 +10,21 @@ import Foundation
 public class FoodViewModel : NSObject{
     @IBOutlet var apiClient : ApiClient!
     var foods: [Food]?
+    let defaultValues = UserDefaults.standard
     
     func getFoods(completion: @escaping ()-> Void){
         apiClient.fetchFoods{ (arrayOfFoods) in
+            DispatchQueue.main.async {
+                self.foods = arrayOfFoods
+                completion()
+            }
+            
+        }
+    }
+    
+    func getFoodsForUser(completion: @escaping ()-> Void){
+        let id = defaultValues.integer(forKey: "currentId")
+        apiClient.fetchFoodsForUser(ID: id ){ (arrayOfFoods) in
             DispatchQueue.main.async {
                 self.foods = arrayOfFoods
                 completion()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class AddFoodViewController: UIViewController {
     /*
@@ -25,10 +26,11 @@ class AddFoodViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var kcalTextField: UITextField!
+    let userDefaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
-        //pickerView.dataSource=self
-        //pickerView.delegate=self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
+                   })
     }
 
     @IBAction func cancelButtonPress(_ sender: Any) {
@@ -41,9 +43,15 @@ class AddFoodViewController: UIViewController {
         //let selection = pickerView.selectedRow(inComponent: 0)+1
         self.addViewModel.CreateFoodVM(name: nameTextField.text!, kcal: Int(kcalTextField.text!)! , quantity: Int(quantityTextField.text!)!, userId: UserDefaults.standard.integer(forKey: "currentId")) {
             if self.addViewModel != nil {
-                let alert = UIAlertController(title: "Done", message: "\(self.nameTextField.text!) was added", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                let content = UNMutableNotificationContent()
+                content.title = "Hello" + self.userDefaults.string(forKey: "username")! + "!"
+                content.subtitle="You just added a new food"
+                content.body="hoped you enjoyed your" + String(self.nameTextField.text!)
+                content.badge=1
+                
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                let request = UNNotificationRequest(identifier: "timerDone",content: content,trigger: trigger)
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             }
             else
             {

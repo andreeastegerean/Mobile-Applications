@@ -16,8 +16,8 @@ public class RegisterViewModel: NSObject {
     var Username: String?
     var Id: Int?
     
-    func registerUser(fullname: String, email: String, username: String , password: String, completion: @escaping (Bool)-> Void){
-        apiClient.register(Fullname: fullname, Email: email, Username: username, Password: password){
+    func registerUser(fullname: String, email: String, username: String , password: String,role: Int, completion: @escaping (Bool)-> Void){
+        apiClient.register(Fullname: fullname, Email: email, Username: username, Password: password,Role: role){
             (success, message,username,id) in
             DispatchQueue.main.async {
                 self.Username = username;

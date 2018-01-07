@@ -24,26 +24,24 @@ public class FoodTableViewCell : UITableViewCell{
 class FoodsTableViewController: UITableViewController {
 
     @IBOutlet var foodViewModel : FoodViewModel!
-    
-    @IBAction func goToChart(_ sender: Any) {
-        let chartsController =
-            self.storyboard?.instantiateViewController(withIdentifier: "ChartsViewController") as!
-        ChartsViewController
-        self.present(chartsController, animated: true)
-    }
-    @IBAction func navigateToCreateFood(_ sender: Any) {
-        let createViewController =
-            self.storyboard?.instantiateViewController(withIdentifier: "AddFoodViewController") as!
-        AddFoodViewController
-        self.present(createViewController, animated: true)
-    }
+    let defaultValues = UserDefaults.standard
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.tableView.contentInset = UIEdgeInsets(top: 40,left: 0,bottom: 0,right: 0)
-        foodViewModel.getFoods {
-            self.tableView.reloadData()
+        let role = defaultValues.integer(forKey: "userRole")
+        if(role == 1){
+            foodViewModel.getFoods {
+                self.tableView.reloadData()
+            }
         }
+        else{
+            foodViewModel.getFoodsForUser {
+                self.tableView.reloadData()
+            }
+        }
+        
      
     }
     
@@ -74,9 +72,28 @@ class FoodsTableViewController: UITableViewController {
         cell.backgroundColor = .clear
         return cell
     }
+    
+    @IBAction func goToChart(_ sender: Any) {
+        let chartsController =
+            self.storyboard?.instantiateViewController(withIdentifier: "ChartsViewController") as!
+        ChartsViewController
+        self.present(chartsController, animated: true)
+    }
+    @IBAction func navigateToCreateFood(_ sender: Any) {
+        let createViewController =
+            self.storyboard?.instantiateViewController(withIdentifier: "AddFoodViewController") as!
+        AddFoodViewController
+        self.present(createViewController, animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        let loginViewController =
+            self.storyboard?.instantiateViewController(withIdentifier: "SigninViewController") as!
+        SigninViewController
+        self.present(loginViewController, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
