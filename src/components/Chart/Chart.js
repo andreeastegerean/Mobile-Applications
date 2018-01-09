@@ -24,7 +24,6 @@ export default class Chart extends Component {
             var copyOfFoods = foods;
             var items = [];
             for (let f of copyOfFoods) {
-                console.log(f);
                 items.push([{
                     name: f.Name,
                     v: f.Quantity

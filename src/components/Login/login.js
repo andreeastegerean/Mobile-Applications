@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Image, Text, KeyboardAvoidingView, TouchableOpacity, TextInput } from 'react-native';
 import LoginForm from './loginForm';
 import Communications from 'react-native-communications';
+import ApiClient from '../../Utils/ApiClient'
 export default class Login extends Component {
     static navigationOptions = {
         header: null
@@ -10,10 +11,25 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
+            username: "",
             password: ""
         };
     }
+
+    Login = async () => {
+        var result = await ApiClient.login(this.state.username, this.state.password);
+        if (result === "OK") {
+            this.props.navigation.navigate("FoodList");
+
+        }
+        else {
+            Alert.alert("Login failed in login component");
+        }
+    };
+
+    RegisterClick = () => {
+        this.props.navigation.navigate("Register");
+    };
 
 
     SendEmail = () => {
@@ -37,17 +53,20 @@ export default class Login extends Component {
                     <TextInput
                         placeholder="username"
                         returnKeyType="next"
-                        style={styles.input} 
-                        onChangeText={email => this.setState({email})}
-                        />
+                        style={styles.input}
+                        onChangeText={username => this.setState({ username })}
+                    />
                     <TextInput
                         placeholder="password"
                         secureTextEntry
                         returnKeyType="go"
-                        onChangeText= {password => this.setState({password})}
+                        onChangeText={password => this.setState({ password })}
                         style={styles.input} />
-                    <TouchableOpacity style={styles.loginButton} onPress={this.SendEmail}>
+                    <TouchableOpacity style={styles.loginButton} onPress={this.Login}>
                         <Text style={styles.textButton}>Login </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.loginButton} onPress={this.RegisterClick}>
+                        <Text style={styles.textButton}>Register </Text>
                     </TouchableOpacity>
                 </View>
             </KeyboardAvoidingView>

@@ -38,15 +38,17 @@ export default class AddFood extends Component {
         var qu = parseInt(this.state.currentlySelectedValue);
         console.log(name + kcal + qu);
         ApiClient.addFood(name, kcal, qu)
-            .then(alert(name + " added successfully!"))
+            .then(
+                
+            )
             .catch((error) => {
                 console.log("Api call error");
                 alert(error.message);
             })
 
-
         this.props.navigation.state.params.onGoBack();
         this.props.navigation.goBack();
+
     };
 
     render() {
@@ -84,6 +86,7 @@ export default class AddFood extends Component {
                     <Text style={styles.textBtn}>Save</Text>
                 </TouchableOpacity>
             </View>
+
         );
     }
 }

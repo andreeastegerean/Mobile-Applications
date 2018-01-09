@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { AsyncStorage } from "react-native";
 import { StyleSheet, View, Image, Text, KeyboardAvoidingView, ScrollView, FlatList, Button, TouchableOpacity } from 'react-native';
 import ApiClient from "../../Utils/ApiClient";
-import { AsyncStorage } from "react-native";
+
 
 export default class FoodList extends Component {
 
@@ -42,18 +43,40 @@ export default class FoodList extends Component {
     }
 
     reloadData = async () => {
-        ApiClient.fetchFoods().then(foods => {
-            var list = foods;
-            if (foods !== null) {
-
-                this.setState({ dataSource: list }, function () {
-                    console.log(this.state.dataSource);
-                });
-            }
-        }).catch((error) => {
-            console.log("Api call error");
-            alert(error.message);
-        });
+        var _role= await AsyncStorage.getItem("userRole");
+        var _id= await AsyncStorage.getItem("userId");
+        console.log(_role+" "+_id);
+        if(_role == "1")
+        {
+            ApiClient.fetchFoods().then(foods => {
+                var list = foods;
+                if (foods !== null) {
+    
+                    this.setState({ dataSource: list }, function () {
+                        console.log(this.state.dataSource);
+                    });
+                }
+            }).catch((error) => {
+                console.log("Api call error at fetchFoods");
+                alert(error.message);
+            });
+        }else
+        {
+            ApiClient.fetchFoodsForUser(_id).then(foods => {
+                var list2 = foods;
+                console.log("List2 is "+list2);
+                if (foods !== null) {
+    
+                    this.setState({ dataSource: list2 }, function () {
+                        console.log(this.state.dataSource);
+                    });
+                }
+            }).catch((error) => {
+                console.log("Api call error at fetchFoodsForUser");
+                alert(error.message);
+            });
+        }
+        
     }
 
     render() {
